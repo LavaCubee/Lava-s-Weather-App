@@ -6,8 +6,8 @@ import os
 from pystray import Icon, MenuItem, Menu
 from PIL import Image
 
-CITY = "Krasnodar"
-UPDATE_INTERVAL = 600  # Таймер обновления погоды (10 минут)
+CITY = "City" # Your city,Ваш город.
+UPDATE_INTERVAL = 600  # Timer of weather refresh (10 minutes),Таймер обновления погоды (10 минут).
 
 def restart_app(icon, item):
     icon.stop()
@@ -29,7 +29,7 @@ def get_weather():
         )
         return r.text
     except:
-        return "Ошибка погоды"
+        restart_app
 
 def choose_icon(weather_text):
     text = weather_text.lower()
@@ -64,10 +64,10 @@ def exit_app(icon, item):
 icon = Icon(
     "weather",
     Image.open(resource_path("icons/cloud.png")),
-    "Загрузка погоды...",
+    "Weather loading...,Загрузка погоды...",
     menu=Menu(
-        MenuItem("Перезапуск приложения", restart_app),
-        MenuItem("Выход", exit_app)
+        MenuItem("Restart App,Перезапуск приложения", restart_app),
+        MenuItem("Exit,Выход", exit_app)
     )
 )
 
