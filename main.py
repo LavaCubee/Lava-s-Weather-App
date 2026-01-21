@@ -29,7 +29,7 @@ def get_weather():
         )
         return r.text
     except:
-        restart_app
+        return 'Please restart app,Пожалуйста перезагрузите приложение'
 
 def choose_icon(weather_text):
     text = weather_text.lower()
@@ -66,7 +66,7 @@ icon = Icon(
     Image.open(resource_path("icons/cloud.png")),
     "Weather loading...,Загрузка погоды...",
     menu=Menu(
-        MenuItem("Restart App,Перезапуск приложения", restart_app),
+        MenuItem("Restart app,Перезапуск приложения", restart_app),
         MenuItem("Exit,Выход", exit_app)
     )
 )
